@@ -30,3 +30,6 @@ vendor/*-manifest.json
 
 # Docs
 gh-pages
+
+package-lock.json
+yarn.lock
