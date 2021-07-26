@@ -9,7 +9,11 @@ export const reducers: ActionReducerMap<ProductsState> = {
   pizzas: fromPizzas.reducer
 };
 
-export const getProductsState = createFeatureSelector<ProductsState>('products');
+export const getProductsState = createFeatureSelector<ProductsState>('products'); // get products 
 
-// pizza state 
-export const getPizzaState = createSelector(getProductsState, (state: ProductsState) => state.pizzas);
+// pizzas state 
+export const getPizzaState = createSelector(getProductsState, (state: ProductsState) => state.pizzas); // get pizza { data[], loaded, loading } 
+
+export const getAllPizzas = createSelector(getPizzaState, fromPizzas.getPizzas); // pizza data[] only 
+export const getAllPizzasLoaded = createSelector(getPizzaState, fromPizzas.getPizzasLoaded); // loaded only 
+export const getAllPizzasLoading = createSelector(getPizzaState, fromPizzas.getPizzasLoading); // loading only 
