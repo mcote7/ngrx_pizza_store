@@ -26,7 +26,7 @@ export function reducer(
       };
     }
     case fromPizzas.LOAD_PIZZAS_SUCCESS: {
-      // console.log(action.payload);
+      console.log("Pizzas[] ? :::",action.payload);
       const data = action.payload;
       return {
         ...state,
@@ -36,6 +36,7 @@ export function reducer(
       };
     }
     case fromPizzas.LOAD_PIZZAS_FAIL: {
+      console.log("load pizzas fail :::",action.payload);
       return {
         ...state,
         loading: false,
