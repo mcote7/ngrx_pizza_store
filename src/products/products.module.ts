@@ -7,18 +7,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+//  register your reducers & effects 
 import { reducers, effects } from './store';
 
-// components
+// components 
 import * as fromComponents from './components';
 
-// containers
+// containers 
 import * as fromContainers from './containers';
 
-// services
+// services 
 import * as fromServices from './services';
 
-// routes
+// routes 
 export const ROUTES: Routes = [
   {
     path: '',

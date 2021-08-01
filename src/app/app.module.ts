@@ -3,14 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// ngrx modules 
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-// not used in production
+// not used in production 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 
-// this would be done dynamically with webpack for builds
+// this would be done dynamically with webpack for builds 
 const environment = {
   development: true,
   production: false,
@@ -37,6 +38,7 @@ export const ROUTES: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
+    
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : [],

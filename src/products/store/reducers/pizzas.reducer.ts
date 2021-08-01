@@ -1,6 +1,6 @@
 import { Pizza } from "../../models/pizza.model";
 import * as fromPizzas from "../actions/pizzas.action";
-
+ 
 export interface PizzaState {
   data: Pizza[],
   loaded: boolean,
@@ -13,7 +13,7 @@ export const initialState: PizzaState = {
   loading: false
 };
 
-// reducers 
+// reducers switch action.type modifys initial State & returns new State 
 export function reducer(
   state = initialState, 
   action: any ): PizzaState {
@@ -47,7 +47,7 @@ export function reducer(
   return state;
 };
 
-// selectors 
+// selectors > compose state 
 export const getPizzas = (state: PizzaState) => state.data;
 export const getPizzasLoaded = (state: PizzaState) => state.loaded;
 export const getPizzasLoading = (state: PizzaState) => state.loading;
