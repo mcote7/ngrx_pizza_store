@@ -28,15 +28,17 @@ export function reducer(
     case fromPizzas.LOAD_PIZZAS_SUCCESS: {
       console.log("Pizzas entity{} ? :::", action.payload);
       const pizzas = action.payload;
-      const entities = pizzas.reduce((entities: { [id: number]: Pizza }, pizza: Pizza) => {
-        return {
-          ...entities,
-          [pizza.id]: pizza
+      const entities = pizzas.reduce(
+        (entities: { [id: number]: Pizza }, pizza: Pizza) => {
+          return {
+            ...entities,
+            [pizza.id]: pizza
+          };
+        }, 
+        {
+          ...state.entities
         }
-      }, 
-      {
-        ...state.entities
-      });
+      );
       return {
         ...state,
         loading: false,
@@ -45,7 +47,7 @@ export function reducer(
       };
     }
     case fromPizzas.LOAD_PIZZAS_FAIL: {
-      console.log("load pizzas fail :::",action.payload);
+      console.log("load pizzas fail :::", action.payload); // err 
       return {
         ...state,
         loading: false,
