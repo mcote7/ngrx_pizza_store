@@ -4,9 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // ngrx modules 
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './store';
+import { reducers, CoustomSerializer } from './store';
 
 // not used in production 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -40,10 +41,15 @@ export const ROUTES: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     
+    // ngrx mods 
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule,
+    
     environment.development ? StoreDevtoolsModule.instrument() : [],
   ],
+  // must provide serializers 
+  providers: [{provide: RouterStateSerializer, useClass: CoustomSerializer}],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
