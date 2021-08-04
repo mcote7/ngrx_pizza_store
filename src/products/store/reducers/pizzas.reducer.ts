@@ -2,9 +2,9 @@ import { Pizza } from "../../models/pizza.model";
 import * as fromPizzas from "../actions/pizzas.action";
 
 export interface PizzaState {
-  entities: { [id: number]: Pizza },
-  loaded: boolean,
-  loading: boolean
+  entities: { [id: number]: Pizza };
+  loaded: boolean;
+  loading: boolean;
 }
 
 export const initialState: PizzaState = {
