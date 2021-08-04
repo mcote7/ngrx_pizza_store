@@ -7,16 +7,19 @@ import * as pizzaActions from '../actions/pizzas.action';
 
 @Injectable()
 export class PizzaEffects {
-  constructor(private actions$: Actions, private pizzaService: fromServices.PizzasService) {}
+
+  constructor(
+    private actions$: Actions, 
+    private pizzaService: fromServices.PizzasService
+  ) {}
 
   @Effect()
   loadPizzas$ = this.actions$.ofType(pizzaActions.LOAD_PIZZAS)
-    .pipe(switchMap(() => {
-        return this.pizzaService.getPizzas().pipe(
-          map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),
-          catchError(err => of(new pizzaActions.LoadPizzasFail(err)))
-        )
-      }));
-}
-
-// effects 
+  .pipe(switchMap(() => {
+      return this.pizzaService.getPizzas().pipe(
+        map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),
+        catchError(err => of(new pizzaActions.LoadPizzasFail(err)))
+      )
+    })
+  );
+} 

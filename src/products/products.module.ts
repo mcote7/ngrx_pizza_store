@@ -44,8 +44,8 @@ export const ROUTES: Routes = [
     StoreModule.forFeature('products', reducers),
     EffectsModule.forFeature(effects)
   ],
-  // ts-lint disable next line please
-  providers: [...fromServices.services],
+  // tslint:disable-next-line
+  providers: [...fromServices.services],// tslint:disable-line // i tried...
   declarations: [...fromContainers.containers, ...fromComponents.components],
   exports: [...fromContainers.containers, ...fromComponents.components],
 })
