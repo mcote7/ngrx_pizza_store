@@ -58,7 +58,7 @@ export function reducer(
   return state;
 };
 
-// selectors > compose state 
+//  compose slices state for Selectors to call
 export const getPizzasEntities = (state: PizzaState) => state.entities;
 export const getPizzasLoaded = (state: PizzaState) => state.loaded;
 export const getPizzasLoading = (state: PizzaState) => state.loading;

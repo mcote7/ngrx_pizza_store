@@ -11,17 +11,17 @@ import { Pizza } from "src/products/models/pizza.model";
 export const getPizzaState = createSelector(fromFeature.getProductsState, (state: fromFeature.ProductsState) => state.pizzas); // get pizza { entities{}, loaded, loading } 
 
 // individual | single  state selectors 
-export const getAllPizzasEntities = createSelector(getPizzaState, fromPizzas.getPizzasEntities); // pizza entities{} only 
+export const getPizzasEntities = createSelector(getPizzaState, fromPizzas.getPizzasEntities); // pizza entities{} only 
 
 // get selected pizza from router state params .pizzaId 
-export const getSelectedPizza = createSelector(getAllPizzasEntities, fromRoot.getRouterState, (entities, router): Pizza => {
+export const getSelectedPizza = createSelector(getPizzasEntities, fromRoot.getRouterState, (entities, router): Pizza => {
   return router.state && entities[router.state.params.pizzaId]
-})
+});
 
 // convert entities to array for display 
-export const getAllPizzas = createSelector(getAllPizzasEntities, (entities) => {
+export const getAllPizzas = createSelector(getPizzasEntities, (entities) => {
   return Object.keys(entities).map(id => entities[+id]);
 });
 
-export const getAllPizzasLoaded = createSelector(getPizzaState, fromPizzas.getPizzasLoaded); // loaded only 
-export const getAllPizzasLoading = createSelector(getPizzaState, fromPizzas.getPizzasLoading); // loading only 
+export const getPizzasLoaded = createSelector(getPizzaState, fromPizzas.getPizzasLoaded); // loaded only 
+export const getPizzasLoading = createSelector(getPizzaState, fromPizzas.getPizzasLoading); // loading only 
