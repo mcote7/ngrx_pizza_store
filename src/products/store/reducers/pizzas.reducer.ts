@@ -68,6 +68,15 @@ export function reducer(
         entities
       };
     }
+    case fromPizzas.REMOVE_PIZZA_SUCCESS: {
+      const pizza = action.payload;
+      // using destructuring to get all entities except for the id one
+      const { [pizza.id]: removedPizza, ...entities } = state.entities;
+      return {
+        ...state,
+        entities
+      }
+    }
   }
   return state;
 };
