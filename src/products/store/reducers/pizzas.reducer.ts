@@ -54,6 +54,18 @@ export function reducer(
         loaded: false
       };
     }
+    case fromPizzas.CRATE_PIZZA_SUCCESS: {
+      const pizza = action.payload;
+      // merge payload into exsisting entities 
+      const entities = {
+        ...state.entities,
+        [pizza.id]: pizza
+      };
+      return {
+        ...state,
+        entities
+      };
+    }
   }
   return state;
 };
