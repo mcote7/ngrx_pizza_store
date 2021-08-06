@@ -54,6 +54,8 @@ export function reducer(
         loaded: false
       };
     }
+    // update && create do the same operation 
+    case fromPizzas.UPDATE_PIZZA: 
     case fromPizzas.CRATE_PIZZA_SUCCESS: {
       const pizza = action.payload;
       // merge payload into exsisting entities 

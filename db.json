@@ -248,6 +248,18 @@
         {
           "id": 7,
           "name": "olive"
+        },
+        {
+          "id": 4,
+          "name": "chili"
+        },
+        {
+          "id": 12,
+          "name": "tomato"
+        },
+        {
+          "id": 11,
+          "name": "sweetcorn"
         }
       ],
       "id": 7
