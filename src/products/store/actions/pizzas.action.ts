@@ -21,22 +21,22 @@ export class LoadPizzasSuccess implements Action {
 }
 
 // create pizza
-export const CRATE_PIZZA = '[products] Create Pizza';
-export const CRATE_PIZZA_FAIL = '[products] Create Pizza fail';
-export const CRATE_PIZZA_SUCCESS = '[products] Create Pizza success';
+export const CREATE_PIZZA = '[products] Create Pizza';
+export const CREATE_PIZZA_FAIL = '[products] Create Pizza fail';
+export const CREATE_PIZZA_SUCCESS = '[products] Create Pizza success';
 
 export class CreatePizza implements Action {
-  readonly type = CRATE_PIZZA;
+  readonly type = CREATE_PIZZA;
   constructor(public payload: Pizza) {}
 }
 
 export class CreatePizzaFail implements Action {
-  readonly type = CRATE_PIZZA_FAIL;
+  readonly type = CREATE_PIZZA_FAIL;
   constructor(public payload: any) {}
 }
 
 export class CreatePizzaSuccess implements Action {
-  readonly type = CRATE_PIZZA_SUCCESS;
+  readonly type = CREATE_PIZZA_SUCCESS;
   constructor(public payload: Pizza) {}
 }
 

@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { Effect, Actions } from "@ngrx/effects";
 import { of } from "rxjs/observable/of";
 import { map, switchMap, catchError } from "rxjs/operators";
+
+import * as fromRoot from '../../../app/store';
+
 import * as fromServices from '../../services';
 import * as pizzaActions from '../actions/pizzas.action';
 
@@ -24,7 +27,7 @@ export class PizzaEffects {
   );
 
   @Effect()
-  createPizza$ = this.actions$.ofType(pizzaActions.CRATE_PIZZA)
+  createPizza$ = this.actions$.ofType(pizzaActions.CREATE_PIZZA)
   .pipe(
     map((action: pizzaActions.CreatePizza) => action.payload),
     switchMap(pizza => {
@@ -33,6 +36,17 @@ export class PizzaEffects {
         map(pizza => new pizzaActions.CreatePizzaSuccess(pizza)),
         catchError(err => of(new pizzaActions.CreatePizzaFail(err)))
       )
+    })
+  );
+
+  @Effect()
+  createPizzaSuccess$ = this.actions$.ofType(pizzaActions.CREATE_PIZZA_SUCCESS)
+  .pipe(
+    map((action: pizzaActions.CreatePizzaSuccess) => action.payload),
+    map(pizza => {
+      return new fromRoot.Go({
+        path: ['/products', pizza.id]
+      });
     })
   );
 
@@ -61,4 +75,17 @@ export class PizzaEffects {
       )
     })
   );
+
+  @Effect()
+  handlePizzaUpdateOrRemoveSuccess$ = this.actions$.ofType(
+    pizzaActions.UPDATE_PIZZA_SUCCESS,
+    pizzaActions.REMOVE_PIZZA_SUCCESS
+  ).pipe(
+    map(() => {
+      return new fromRoot.Go({
+        path: ['/products']
+      });
+    })
+  );
+
 } 
