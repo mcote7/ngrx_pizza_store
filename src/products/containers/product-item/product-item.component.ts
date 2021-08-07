@@ -8,10 +8,10 @@ import * as fromStore from '../../store';
 
 import { Pizza } from '../../models/pizza.model';
 import { Topping } from '../../models/topping.model';
-import { from } from 'rxjs/observable/from';
 
 @Component({
   selector: 'product-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['product-item.component.scss'],
   template: `
     <div 
